@@ -32,21 +32,22 @@ function getHumanChoice() {
     console.log(input);
     // Convert text to lowercase
     input = input.toLowerCase();
-    // If text is equal to "rock", return "rock"
-    if (input === "rock") {
-        return "rock";
-    // If text is equal to "paper", return "paper"
-    } else if (input === "paper") {
-        return "paper";
-    // If text is equal to "scissors", return "scissors"
-    } else if (input === "scissors") {
-        return "scissors";
-    // If text isn't valid, prompt again
+    
+    // Check if input is one of rock, paper, or scissors
+    if (input === "rock" || input === "paper" || input === "scissors") {
+        // If so, return input
+        return input;
     } else {
+        // If not, prompt again
         getHumanChoice();
     }
+    
+    
 }
    
+// Declare new function playRound, with parameters humanChoice and computerChoice
+
+
 
 // Call function to getComputerChoice
 getComputerChoice();
