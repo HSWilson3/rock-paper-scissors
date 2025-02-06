@@ -1,9 +1,11 @@
 // Declare a variable computerChoice
 let computerChoice;
-
 // Declare a variable humanChoice
 let humanChoice;
-
+// Declare a variable humanScore, set to 0
+let humanScore = 0;
+// Declare a variable computerScore, set to 0
+let computerScore = 0;
 
 // Declare a function to getComputerChoice
 function getComputerChoice() {
