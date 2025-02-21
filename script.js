@@ -1,6 +1,20 @@
 let computerChoice;
 let humanChoice;
 
+let rockButton = document.querySelector("#rock");
+let paperButton = document.querySelector("#paper");
+let scissorsButton = document.querySelector("#scissors");
+let choicesDiv = document.querySelector("#choices");
+
+
+// Add event listener to the choicesDiv
+// When clicked,
+// identify which button was clicked
+// set humanChoice based on that button
+// get computerChoice
+// call playRound
+
+
 
 function getComputerChoice() {
     
@@ -28,7 +42,7 @@ function getHumanChoice() {
     }
 }
    
-function playGame(rounds) {
+function playGame(rounds = 1) {
     
     let humanScore = 0;
     let computerScore = 0;
@@ -84,4 +98,25 @@ function playGame(rounds) {
     }
 }
 
-playGame(5);
+choicesDiv.addEventListener("click", (event) => {
+    let choice = event.target;
+
+    switch(choice.id) {
+        case "rock":
+            console.log("Player selected Rock");
+            humanChoice = "rock";
+            break;
+        case "paper":
+            console.log("Player selected paper");
+            humanChoice = "paper";
+            break;
+        case "scissors":
+            console.log("Player selected scissors");
+            humanChoice = "scissors";
+            break;
+
+    playRound(humanChoice);
+    }
+});
+
+//playGame();
