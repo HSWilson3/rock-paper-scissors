@@ -73,13 +73,18 @@ function score(winner) {
     }
 
     resultsDiv.appendChild(scorePara);
-    if (computerScore >= 5) {
+
+    if (computerScore >= 5 || humanScore >= 5) {
         let totalScorePara = document.createElement("p");
+        totalScorePara.id = "totalscore";
+
+        if (computerScore >= 5) {
         totalScorePara.textContent = "computer wins!";
-        resultsDiv.appendChild(totalScorePara);
-    } else if (humanScore >= 5) {
-        let totalScorePara = document.createElement("p");
+        } else if (humanScore >= 5) {
         totalScorePara.textContent = "human wins!";
-        resultsDiv.appendChild(totalScorePara);
+        }
+        
+        containerDiv.insertBefore(totalScorePara, choicesDiv);
     }
 }
+
