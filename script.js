@@ -9,10 +9,12 @@ const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 const choicesDiv = document.querySelector("#choices");
 const containerDiv = document.querySelector("#container");
+const resultsDiv = document.querySelector("#results");
+const humanScoreSpan = document.querySelector("#humanscore");
+const computerScoreSpan = document.querySelector("#compscore");
 
-const resultsDiv = document.createElement("div");
-resultsDiv.id = "results";
-containerDiv.appendChild(resultsDiv);
+humanScoreSpan.textContent = humanScore;
+computerScoreSpan.textContent = computerScore;
 
 choicesDiv.addEventListener("click", (event) => {
     humanChoice = event.target.id;
@@ -30,7 +32,6 @@ function getComputerChoice() {
         return "scissors";
     }
 }
-
 
 function playRound(humanChoice) {
     computerChoice = getComputerChoice();
@@ -60,32 +61,25 @@ function score(winner) {
         scorePara.textContent = "you win! " + humanChoice + " beats " + computerChoice;
         //console.log("you win! " + humanChoice + " beats " + computerChoice);            
         humanScore ++;
+        humanScoreSpan.textContent = humanScore;
     } else if (winner === "computer") {
         scorePara.textContent = "you lose! " + computerChoice + " beats " + humanChoice;
         //console.log("you lose! " + computerChoice + " beats " + humanChoice);
         computerScore ++;
-    } else if (winner === "score") {
+        computerScoreSpan.textContent = computerScore;
+    } else if (winner === "tie") {
         scorePara.textContent = "it's a tie!";
         //console.log("it's a tie!");
     }
 
-    //console.log("Humanscore = " + humanScore + " and computerscore = " + computerScore);
-
-    /* if (computerScore > humanScore) {
-        console.log("Computer wins!");
-    } else if (humanScore > computerScore) {
-        console.log("Human wins!");
-    } else {
-        console.log("It's a tie!");
-    }  */
     resultsDiv.appendChild(scorePara);
+    if (computerScore >= 5) {
+        let totalScorePara = document.createElement("p");
+        totalScorePara.textContent = "computer wins!";
+        resultsDiv.appendChild(totalScorePara);
+    } else if (humanScore >= 5) {
+        let totalScorePara = document.createElement("p");
+        totalScorePara.textContent = "human wins!";
+        resultsDiv.appendChild(totalScorePara);
+    }
 }
-
-
-
-
-
-
-
-
-//playGame();
